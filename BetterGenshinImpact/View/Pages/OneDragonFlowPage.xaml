@@ -329,6 +329,31 @@
                                          HorizontalContentAlignment="Center"
                                          Text="{Binding SelectedConfig.MinResinToKeep, Mode=TwoWay, TargetNullValue=-1}"
                                          Height="{Binding ElementName=combinedTextBlocks, Path=ActualHeight}"/>
+                                
+                                <ui:TextBlock Grid.Row="0"
+                                              Grid.Column="4"
+                                              Width="Auto"
+                                              Margin=" 15,0,0,0"
+                                              HorizontalAlignment="Left"
+                                              FontTypography="Body"
+                                              Text="循环次数"
+                                              TextWrapping="Wrap" />
+                                <ui:TextBlock Grid.Row="1"
+                                              Grid.Column="4"
+                                              Margin=" 15,0,0,0"
+                                              Width="Auto"
+                                              HorizontalAlignment="Left"
+                                              Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                              Text="数字"
+                                              TextWrapping="Wrap" />
+                                <TextBox Grid.Row="0"
+                                         Grid.Column="5"
+                                         Grid.RowSpan="2" 
+                                         Margin="8,0,0,0" 
+                                         Width="Auto"
+                                         HorizontalContentAlignment="Center"
+                                         Text="{Binding SelectedConfig.OneDragonFlowLoop, Mode=TwoWay, TargetNullValue=1}"
+                                         Height="{Binding ElementName=combinedTextBlocks, Path=ActualHeight}"/>
 
                                 
                             </Grid>

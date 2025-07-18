@@ -43,6 +43,10 @@ public partial class OneDragonFlowConfig : ObservableObject
     [ObservableProperty]
     private int _minResinToKeep = 0;
     
+    // 一条龙循环次数
+    [ObservableProperty]
+    private int _oneDragonFlowLoop = 1;
+    
     // 领取每日奖励的好感数量
     [ObservableProperty]
     private string _sundayEverySelectedValue = "0";
