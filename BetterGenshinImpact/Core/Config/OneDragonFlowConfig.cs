@@ -7,6 +7,10 @@ namespace BetterGenshinImpact.Core.Config;
 [Serializable]
 public partial class OneDragonFlowConfig : ObservableObject
 {
+    // 一条龙循环次数
+    [ObservableProperty]
+    private int _oneDragonFlowLoop = 1;
+
     // 配置名
     [ObservableProperty]
     private string _name = string.Empty;
