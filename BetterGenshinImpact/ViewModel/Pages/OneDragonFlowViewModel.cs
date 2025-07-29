@@ -679,7 +679,13 @@ public partial class OneDragonFlowViewModel : ViewModel
     public async Task OnOneKeyExecute()
     {
         _logger.LogInformation($"启用一条龙配置：{SelectedConfig.Name}");
-        var taskListCopy = new List<OneDragonTaskItem>(TaskList);//避免执行过程中修改TaskList
+
+    int loopCount = SelectedConfig.OneDragonFlowLoop; 
+    _logger.LogInformation($"循环次数：{SelectedConfig.OneDragonFlowLoop}");
+    for (int currentLoop = 1; currentLoop <= loopCount; currentLoop++)
+    {
+        _logger.LogInformation($"开始第 {currentLoop}/{loopCount} 次循环执行");
+        var taskListCopy = new List<OneDragonTaskItem>(TaskList); //避免执行过程中修改TaskList
         foreach (var task in taskListCopy)
         {
             task.InitAction(SelectedConfig);
@@ -767,6 +773,7 @@ public partial class OneDragonFlowViewModel : ViewModel
                         Toast.Error("执行配置组任务时失败");
                     }
                 }
+
                 // 如果任务已经被取消，中断所有任务
                 if (CancellationContext.Instance.Cts.IsCancellationRequested)
                 {
@@ -776,6 +783,9 @@ public partial class OneDragonFlowViewModel : ViewModel
                 }
             }
         }
+
+        await Task.Delay(3000);
+    }
 
         // 检查和最终结束的任务
         await new TaskRunner().RunThreadAsync(async () =>
