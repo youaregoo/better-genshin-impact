@@ -50,6 +50,7 @@ BetterGI · 更好的原神， 一个基于计算机视觉技术，意图让原�
 * 全自动
   * [一条龙](https://github.com/babalae/better-genshin-impact/issues/846)：一键完成日常（使用历练点），并领取奖励
   * [自动采集/挖矿/锄地](https://bettergi.com/feats/autos/pathing.html)：通过左上角小地图的识别，完成自动采集、挖矿、锄地等功能
+  * [截图识坐标](./Docs/截图坐标识别功能说明.md)：上传游戏截图，自动识别对应的游戏坐标位置
   * [键鼠录制](https://bettergi.com/feats/autos/kmscript.html)：可以录制回放当前的键鼠操作，建议配合调度器使用
 * 操控辅助
   * [那维莱特转圈](https://bettergi.com/feats/macro/other.html#%E9%82%A3%E7%BB%B4%E8%8E%B1%E7%89%B9-%E8%BD%AC%E5%9C%88%E5%9C%88)：设置快捷键后，长按可以不断水平旋转视角（当然你也可以用来转草神）

@@ -22,6 +22,8 @@
             <bgivc:BooleanToEnableTextConverter x:Key="BooleanToEnableTextConverter" />
             <bgivc:InverseBooleanConverter x:Key="InverseBooleanConverter" />
             <bgivc:NotNullConverter x:Key="NotNullConverter" />
+            <bgivc:StringToBoolConverter x:Key="StringToBoolConverter" />
+            <bgivc:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
             <bgivc:EnumToKVPConverter x:Key="EnumToKVPConverter" />
             <bgivc:CultureInfoNameToKVPConverter x:Key="CultureInfoNameToKVPConverter" />
             <Style BasedOn="{StaticResource DefaultTextBoxStyle}" TargetType="{x:Type TextBox}">

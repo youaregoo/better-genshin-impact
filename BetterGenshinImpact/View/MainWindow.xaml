@@ -120,6 +120,14 @@
                                 <ui:SymbolIcon Symbol="Map24" />
                             </ui:NavigationViewItem.Icon>
                         </ui:NavigationViewItem>
+                        <!--  Location24  -->
+                        <ui:NavigationViewItem Content="截图识坐标"
+                                               NavigationCacheMode="Enabled"
+                                               TargetPageType="{x:Type pages:ScreenshotCoordinatePage}">
+                            <ui:NavigationViewItem.Icon>
+                                <ui:SymbolIcon Symbol="Location24" />
+                            </ui:NavigationViewItem.Icon>
+                        </ui:NavigationViewItem>
                         <!--  Script16  -->
                         <ui:NavigationViewItem Content="录制回放"
                                                NavigationCacheMode="Enabled"
