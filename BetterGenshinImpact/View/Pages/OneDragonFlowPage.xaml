@@ -10,6 +10,7 @@
              xmlns:oneDragonView="clr-namespace:BetterGenshinImpact.View.Pages.OneDragon"
              xmlns:pages="clr-namespace:BetterGenshinImpact.ViewModel.Pages"
              xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              d:DataContext="{d:DesignInstance Type=pages:OneDragonFlowViewModel}"
              d:DesignHeight="1000"
              d:DesignWidth="800"
@@ -276,8 +277,6 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
-                                     <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <ui:TextBlock Grid.Row="0"
                                               Grid.Column="0"
@@ -323,50 +322,57 @@
                                               TextWrapping="Wrap" />
                                 <TextBox Grid.Row="0"
                                          Grid.Column="3"
-                                         Grid.RowSpan="2" 
-                                         Margin="8,0,0,0" 
+                                         Grid.RowSpan="2"
+                                         Margin="8,0,0,0"
+                                         MinWidth="80"
                                          Width="Auto"
+                                         HorizontalAlignment="Left"
                                          HorizontalContentAlignment="Center"
                                          Text="{Binding SelectedConfig.MinResinToKeep, Mode=TwoWay, TargetNullValue=-1}"
-                                         Height="{Binding ElementName=combinedTextBlocks, Path=ActualHeight}"/>
-
-                                <!-- 循环次数 标题 -->
-                                <ui:TextBlock
-                                    Grid.Row="0"
-                                    Grid.Column="4"
-                                    Margin="15,0,0,0"
-                                    Width="Auto"
-                                    HorizontalAlignment="Left"
-                                    FontTypography="Body"
-                                    Text="循环次数"
-                                    TextWrapping="Wrap" />
-
-                                <!-- 循环次数 描述（如果不需要可以删掉）-->
-                                <ui:TextBlock
-                                    Grid.Row="1"
-                                    Grid.Column="4"
-                                    Margin="15,0,0,0"
-                                    Width="Auto"
-                                    HorizontalAlignment="Left"
-                                    Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                                    Text="循环次数"
-                                    TextWrapping="Wrap" />
-
-                                <!-- 循环次数 输入框 -->
-                                <TextBox
-                                    Grid.Row="0"
-                                    Grid.Column="5"
-                                    Grid.RowSpan="2"
-                                    Margin="8,0,0,0"
-                                    Width="Auto"
-                                    HorizontalContentAlignment="Center"
-                                    Text="{Binding SelectedConfig.OneDragonFlowLoop, Mode=TwoWay, TargetNullValue=1}"
-                                    Height="{Binding ElementName=combinedTextBlocks, Path=ActualHeight}" />
+                                         VerticalAlignment="Center"/>
 
                                 
                             </Grid>
                         </ui:CardControl.Header>
-                        
+
+                    </ui:CardControl>
+
+                    <!-- 循环次数 -->
+                    <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon ArrowRepeatAll24}">
+                        <ui:CardControl.Header>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <ui:TextBlock Grid.Row="0"
+                                              Grid.Column="0"
+                                              FontTypography="Body"
+                                              Text="循环次数"
+                                              TextWrapping="Wrap" />
+                                <ui:TextBlock Grid.Row="1"
+                                              Grid.Column="0"
+                                              Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                                              Text="设置一条龙任务的循环执行次数"
+                                              TextWrapping="Wrap" />
+                            </Grid>
+                        </ui:CardControl.Header>
+                        <ComboBox MinWidth="100"
+                                  Width="120"
+                                  Margin="0,0,28,0"
+                                  HorizontalContentAlignment="Center"
+                                  SelectedItem="{Binding SelectedConfig.OneDragonFlowLoop, Mode=TwoWay}"
+                                  VerticalAlignment="Center">
+                            <ComboBox.Items>
+                                <sys:Int32>1</sys:Int32>
+                                <sys:Int32>2</sys:Int32>
+                                <sys:Int32>3</sys:Int32>
+                            </ComboBox.Items>
+                        </ComboBox>
                     </ui:CardControl>
 
 
