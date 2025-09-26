@@ -28,6 +28,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using static BetterGenshinImpact.GameTask.Common.TaskControl;
 using static Vanara.PInvoke.User32;
+using BetterGenshinImpact.GameTask.AutoFight;
 
 namespace BetterGenshinImpact.GameTask.AutoStygianOnslaught;
 
@@ -67,7 +68,18 @@ public class AutoStygianOnslaughtTask : ISoloTask
         Init();
         Notify.Event(NotificationEvent.DomainStart).Success($"{Name}启动");
 
-        await DoDomain();
+        try
+        {
+            await DoDomain();
+        }
+        catch (TaskCanceledException)
+        {
+            // do nothing
+        }
+        catch (Exception e)
+        {
+            _logger.LogInformation(e.Message);
+        }
 
         await Delay(3000, ct);
 
@@ -307,6 +319,7 @@ public class AutoStygianOnslaughtTask : ISoloTask
         {
             try
             {
+                AutoFightTask.FightStatusFlag = true;
                 while (!cts.Token.IsCancellationRequested)
                 {
                     // 通用化战斗策略
@@ -330,6 +343,7 @@ public class AutoStygianOnslaughtTask : ISoloTask
                 _logger.LogInformation("自动战斗线程结束");
                 Simulation.ReleaseAllKey();
                 Simulation.SendInput.Mouse.LeftButtonUp();
+                AutoFightTask.FightStatusFlag = false;
             }
         }, cts.Token);
 
